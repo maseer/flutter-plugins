@@ -94,6 +94,10 @@ FlutterWindow::FlutterWindow(
       Scale(1280, scale_factor_), Scale(720, scale_factor_),
       nullptr, nullptr, GetModuleHandle(nullptr), this);
 
+  DWORD dwStyle = GetWindowLong(window_handle, GWL_EXSTYLE);
+  dwStyle |= WS_EX_TOOLWINDOW;
+  SetWindowLong(window_handle, GWL_EXSTYLE, dwStyle);
+
   RECT frame;
   GetClientRect(window_handle, &frame);
   flutter::DartProject project(L"data");

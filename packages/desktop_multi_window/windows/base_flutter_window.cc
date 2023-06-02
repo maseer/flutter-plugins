@@ -67,6 +67,11 @@ void BaseFlutterWindow::SetBounds(double_t x, double_t y, double_t width, double
              static_cast<int>(width),
              static_cast<int>(height),
              TRUE);
+
+  // ######
+  SetWindowPos(handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+  SetForegroundWindow(handle);
+  // ######
 }
 
 void BaseFlutterWindow::SetTitle(const std::string &title) {
